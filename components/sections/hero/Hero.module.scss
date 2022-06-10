@@ -1,0 +1,52 @@
+.hero {
+  background-color: var(--clr-light-bg);
+  padding: 15px 0;
+  width: 100%;
+  text-align: center;
+}
+
+.places {
+  margin: 0 10px;
+  text-align: left;
+}
+
+.places > button {
+}
+
+.places > button:last-child {
+  float: right;
+  padding: 5px;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+
+  img {
+    width: 95%;
+    height: 95%
+  }
+}
+
+.hero h2 {
+  margin-top: 20px;
+  color: var(--clr-secondary)
+}
+
+.details {
+  margin-top: 40px;
+  color: var(--clr-secondary)
+}
+
+.details > span {
+  margin: 0 5px;
+}
+
+.hero > p {
+  margin-top: 25px;
+  color: var(--clr-secondary)
+}
+
+.hero > p > img {
+  width: 1.8rem;
+  display: inline-block;
+  vertical-align: middle;
+}
