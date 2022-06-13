@@ -18,17 +18,17 @@ a, button, input {
   text-decoration: none;
   border: 0;
   border-radius: 0; 
+  font-size: var(--fs-small)
 }
 
 button {
   color: var(--clr-primary);
   background-color: var(--clr-place-btn);
-  padding: 10px 15px;
-  font-size: var(--fs-s);
+  padding: 10px 17.5px;
 }
 
 h1 {
-  font-size: var(--fs-xxlarge)
+  font-size: var(--fs-hero)
 }
 
 h1 small {
@@ -39,4 +39,8 @@ h1 small {
 
 h2 {
   font-size: var(--fs-large);
+}
+
+h3 {
+  font-size: var(--fs-mlarge);
 }

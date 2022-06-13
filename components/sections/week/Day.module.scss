@@ -1,0 +1,29 @@
+.day {
+  font-size: var(--fs-small);
+  padding: 15px 20px;
+  background-color: var(--clr-light-bg);
+  width: fit-content;
+  width: 45%;
+  height: 175px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.day > img {
+  margin: 10px 0;
+  width: 80%;
+  margin-bottom: auto;
+}
+
+.day > div {
+  width: 100%;
+  text-align: left;
+}
+
+.day > div > span:last-child {
+  color: var(--clr-secondary);
+  float: right;
+}
+

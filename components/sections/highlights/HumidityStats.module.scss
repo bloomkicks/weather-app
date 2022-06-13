@@ -1,0 +1,45 @@
+.stats {
+  width: 85%;
+  text-align: right;
+  margin: 0 auto;
+}
+
+.scale {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: var(--fs-xsmall)
+}
+
+.scale > *:first-child {
+  float: left;
+}
+
+.scale > *:nth-child(2) {
+  vertical-align: top;
+}
+
+.scale > *:last-child {
+  float: right;
+}
+
+.line {
+  overflow: hidden;
+  border-radius: 10px;
+  width: 100%;
+  background-color: var(--clr-primary);
+  height: 0.5rem;
+  margin: 3px auto;
+}
+
+.line > .filled {
+  display: block;
+  height: 100%;
+  background-color: var(--clr-stats);
+}
+
+.line {
+}
+
+.stats > input {
+}
