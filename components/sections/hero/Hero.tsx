@@ -1,16 +1,17 @@
 import Images from "./Images";
 import classes from "./Hero.module.scss";
+import Weather from "../../../models/Weather";
 
-const Hero = () => {
+const Hero = ({onSearch}: {onSearch: () => void}) => {
   return (
     <article className={classes.hero}>
       <div className={classes.places}>
-        <button>Search for places</button>
+        <button onClick={onSearch}>Search for places</button>
         <button>
           <img src="/my-location.svg" alt="My Location" />
         </button>
       </div>
-      <Images weather={{ type: "shower" }} />
+      <Images weather={new Weather('shower')} />
       <h1>
         15<small>°C</small>
       </h1>

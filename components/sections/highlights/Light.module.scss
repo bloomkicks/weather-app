@@ -2,7 +2,8 @@
   background-color: var(--clr-light-bg);
   text-align: center;
   padding: 20px;
-  color: var(--clr-secondary)
+  width: 100%;
+  color: var(--clr-secondary);
 }
 
 .light > h2 {
@@ -17,4 +18,10 @@
 
 .percent {
   color: var(--clr-secondary)
+}
+
+@media (min-width: 900px) {
+  .light {
+    flex: 2 1 45%;
+  } 
 }

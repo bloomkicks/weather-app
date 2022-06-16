@@ -1,0 +1,25 @@
+.cross {
+  background-color: transparent;
+  position: absolute;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  right: 10px;
+  top: 12.5px;
+  cursor: pointer;
+}
+
+.cross > span {
+  position: absolute;
+  display: block;
+  width: 3px;
+  height: 20px;
+  background-color: var(--clr-primary);
+  transform: rotate(45deg);
+  top: 15%;
+  right: 42.5%;
+}
+
+.cross > span:last-child {
+  transform: rotate(-45deg);
+}

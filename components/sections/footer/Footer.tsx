@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className={classes.footer}>
       <p>
         created by{" "}
-        <a href="#">
+        <a href="https://github.com/bloomkicks">
           <strong>bloomkicks</strong>
         </a>
         - devChallenges.io

@@ -1,4 +1,12 @@
-body {
+body, #__next {
   min-height: 100vh;
   background-color: var(--clr-dark-bg);
+}
+
+@media (min-width: 900px) {
+  #__next {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }

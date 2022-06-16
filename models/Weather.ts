@@ -5,7 +5,7 @@ class Weather {
   date?: Date
   temperature?: { max?: number, min?: number }
 
-  constructor(type: WeatherType, date: Date, temperature?: { max?: number, min?: number }) {
+  constructor(type: WeatherType, date?: Date, temperature?: { max?: number, min?: number }) {
     this.type = type
     this.date = date
     this.temperature = temperature

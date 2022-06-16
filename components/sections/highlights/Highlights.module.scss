@@ -5,6 +5,23 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
+  flex-wrap: wrap;
   gap: 25px;
+  padding-top: 65px;
+  position: relative;
 }
 
+.lights > h3 {
+  position: absolute;
+  left: 0px;
+  top: 20px;
+}
+
+@media (min-width: 900px) {
+  .lights {
+    flex-direction: row;
+    padding: 0;
+    padding-top: 65px;
+    margin-top: 20px;
+  }
+}

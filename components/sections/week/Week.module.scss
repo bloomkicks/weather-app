@@ -4,6 +4,14 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  flex-grow: 1;
   gap: 20px;
-  padding: 50px 40px;
+  padding: 50px 15px;
+  height: fit-content;
+}
+
+@media (min-width: 900px) {
+  .week {
+    padding: 0;
+  }
 }
