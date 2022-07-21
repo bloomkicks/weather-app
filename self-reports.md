@@ -1,0 +1,1 @@
+- Spent about 1 hour on hero section and initializing
