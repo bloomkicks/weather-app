@@ -12,16 +12,18 @@ import Images from "./Images";
 const Hero = () => {
   return (
     <Stack
-      component="section"
+      component="article"
       alignItems="center"
       width={{ sx: "100%", md: "460px" }}
+      pt={2}
+      pb={3}
     >
       <Stack
         width="100%"
         direction="row"
         justifyContent="space-between"
         alignItems="center"
-        sx={{ p: 2 }}
+        sx={{ px: 2 }}
       >
         <Button variant="contained">Search for places</Button>
         <IconButton
