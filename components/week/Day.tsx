@@ -2,9 +2,16 @@ import { Box, Stack, Typography, Paper } from "@mui/material";
 import Weather from "../../models/Weather";
 import React from "react";
 
-const Day = ({ day }: { day: Weather }) => {
+const Day = (day: {
+  stringDate: string;
+  imgSrc: string;
+  temperature: { min: number; max: number };
+}) => {
   return (
-    <Paper component="section" sx={{width: '125px', height: '175px'}}>
+    <Paper
+      component="section"
+      sx={{ width: "125px", height: "175px" }}
+    >
       <Stack
         alignItems="center"
         width="100%"

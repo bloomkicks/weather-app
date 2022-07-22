@@ -1,21 +1,31 @@
-import { Stack, Typography } from "@mui/material";
-import days from "../../data/days";
+import Weather from "../../models/Weather";
+import { Grid, Typography } from "@mui/material";
 import Day from "./Day";
 import React from "react";
 
-const Week = () => {
+const Week = ({ days }: { days: Weather[] }) => {
   return (
-    <Stack
+    <Grid
+      container
       component="article"
-      direction="row"
-      flexWrap="wrap"
+      justifyContent="center"
       spacing={3}
-      maxWidth={{ xs: "95%", md: "auto" }}
+      sx={{
+        width: "100%",
+        ml: -1,
+        mt: 3,
+      }}
     >
-      {days.map((day) => (
-        <Day day={day} />
+      {days.map(({ imgSrc, stringDate, temperature }) => (
+        <Grid item key={stringDate + imgSrc}>
+          <Day
+            imgSrc={imgSrc}
+            stringDate={stringDate!}
+            temperature={temperature!}
+          />
+        </Grid>
       ))}
-    </Stack>
+    </Grid>
   );
 };
 

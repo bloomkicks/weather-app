@@ -60,7 +60,7 @@ const Hero = () => {
         Fri, 5 Jun
       </Typography>
       <Typography variant="h3" color="text.secondary" mt={2}>
-        <LocationOn />
+        <LocationOn alignmentBaseline="alphabetic" />
         Helsinki
       </Typography>
     </Stack>
