@@ -1,12 +1,8 @@
 import { Box, Stack, Typography, Paper } from "@mui/material";
-import Weather from "../../models/Weather";
+import TDay from "../../models/Day";
 import React from "react";
 
-const Day = (day: {
-  stringDate: string;
-  imgSrc: string;
-  temperature: { min: number; max: number };
-}) => {
+const Day = (day: TDay) => {
   return (
     <Paper
       component="section"
@@ -21,11 +17,12 @@ const Day = (day: {
       >
         <Typography variant="body2">{day.stringDate}</Typography>
         <Box
-          src={day.imgSrc}
+          src={day.weather.imgSrc}
           component="img"
-          width="65%"
-          pl="-23px"
-          pt="-10px"
+          height="65px"
+          position="relative"
+          left="-5px"
+          bottom="-5px"
         />
         <Stack
           direction="row"

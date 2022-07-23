@@ -10,7 +10,6 @@ const Images = () => {
       alignItems="center"
       width="100%"
       overflow="hidden"
-      mt="-20px"
     >
       <Box
         sx={{

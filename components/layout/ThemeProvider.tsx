@@ -12,7 +12,10 @@ const theme = createTheme({
     },
     background: {
       default: "#100E1D",
-      paper: '#1E213A'
+      paper: "#1E213A",
+    },
+    info: { 
+      main: "#FFEC65",
     },
   },
   typography: {
@@ -35,11 +38,11 @@ const theme = createTheme({
       fontSize: 18,
     },
     body2: {
-      fontSize: 16
+      fontSize: 16,
     },
     caption: {
       fontFamily: "Montserrat, Roboto, Arial, sans-serif",
-    }
+    },
   },
 });
 

@@ -3,7 +3,7 @@ import React from "react";
 import { Stack, Paper, Typography } from "@mui/material";
 
 import Moment from "../../models/Moment";
-import Scale from "./Scale";
+import HumidityScale from "./HumidityScale";
 
 const MomentItem = (moment: Moment) => {
   return (
@@ -12,6 +12,7 @@ const MomentItem = (moment: Moment) => {
         component="section"
         alignItems="center"
         justifyContent="center"
+        mx="auto"
         padding={3}
         spacing={3}
       >
@@ -28,12 +29,18 @@ const MomentItem = (moment: Moment) => {
           </Typography>
         </Typography>
         {moment.type == "humidity" && (
-          <Scale value={Number(moment.value)} />
+          <HumidityScale value={Number(moment.value)} />
         )}
         {moment.type == "wind" && (
           <Typography color="text.secondary">
             <Arrow
               sx={{
+                display: 'inline-block',
+                mr: 1,
+                verticalAlign: 'middle',
+                borderRadius: '50%',
+                border: '1px solid',
+                borderColor: 'text.secondary',
                 transform: `rotate(${moment.wind!.rotation!})`,
               }}
             />

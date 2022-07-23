@@ -5,7 +5,7 @@ import React from "react";
 
 const Moments = ({ moments }: { moments: Moment[] }) => {
   return (
-    <Box mt={6} px={2}>
+    <Box mt={6} px={3}>
       <Typography variant="h2">Today's Highlights</Typography>
       <Grid
         container
@@ -17,7 +17,14 @@ const Moments = ({ moments }: { moments: Moment[] }) => {
       >
         {moments.map(
           ({ type, title, value, measureSign, wind }) => (
-            <Grid item key={title + value + measureSign}>
+            <Grid
+              item
+              width={{ xs: "auto", md: "350px" }}
+              maxWidth={{ xs: "500px" }}
+              xs={12}
+              lg={6}
+              key={title + value + measureSign}
+            >
               <MomentItem
                 type={type}
                 title={title}

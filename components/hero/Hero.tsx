@@ -14,9 +14,14 @@ const Hero = () => {
     <Stack
       component="article"
       alignItems="center"
-      width={{ sx: "100%", md: "460px" }}
+      position={{ xs: "static", md: "fixed" }}
+      left="0"
+      top="0"
+      width={{ xs: "100%", md: "460px" }}
+      height={{ xs: "auto", md: "100%" }}
       pt={2}
-      pb={3}
+      pb={6}
+      bgcolor="background.paper"
     >
       <Stack
         width="100%"
@@ -27,7 +32,10 @@ const Hero = () => {
       >
         <Button variant="contained">Search for places</Button>
         <IconButton
-          sx={{ color: "text.primary", bgcolor: "primary.main" }}
+          sx={{
+            color: "text.primary",
+            bgcolor: "primary.main",
+          }}
           size="small"
         >
           <MyLocation fontSize="large" />
@@ -59,8 +67,10 @@ const Hero = () => {
         </Box>
         Fri, 5 Jun
       </Typography>
-      <Typography variant="h3" color="text.secondary" mt={2}>
-        <LocationOn alignmentBaseline="alphabetic" />
+      <Typography variant="h3" color="text.secondary" mt={3}>
+        <LocationOn
+          sx={{ verticalAlign: "bottom", mr: "2px" }}
+        />
         Helsinki
       </Typography>
     </Stack>
