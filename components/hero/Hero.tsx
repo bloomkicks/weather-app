@@ -1,3 +1,5 @@
+import { RootState } from "../../store";
+import { useSelector } from "react-redux";
 import React, { useState } from "react";
 import {
   Typography,
@@ -13,6 +15,9 @@ import SearchDrawer from "../search/SearchDrawer";
 import Images from "./Images";
 
 const Hero = () => {
+  const location = useSelector(
+    (state: RootState) => state.location.current
+  );
   const [isSearchOpen, setIsSearchOpen] =
     useState<boolean>(false);
 
@@ -29,7 +34,10 @@ const Hero = () => {
       pb={6}
       bgcolor="background.paper"
     >
-      <SearchDrawer open={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      <SearchDrawer
+        open={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+      />
       <Stack
         width="100%"
         direction="row"
@@ -75,7 +83,7 @@ const Hero = () => {
       >
         Shower
       </Typography>
-      <Typography color="text.secondary">
+      <Typography color="text.secondary" mb={2}>
         Today
         <Box component="span" display="inline-block" mx={2}>
           •
@@ -86,7 +94,7 @@ const Hero = () => {
         <LocationOn
           sx={{ verticalAlign: "bottom", mr: "2px" }}
         />
-        Helsinki
+        {location.location}
       </Typography>
     </Stack>
   );

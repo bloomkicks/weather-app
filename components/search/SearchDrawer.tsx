@@ -1,10 +1,10 @@
+import SearchField from "./SearchField";
+import Close from "@mui/icons-material/Close";
 import {
   Drawer,
-  Typography,
-  Box,
+  IconButton,
   Stack,
   Button,
-  TextField,
 } from "@mui/material";
 
 import LocationList from "./LocationList";
@@ -20,6 +20,7 @@ const SearchDrawer = ({
   return (
     <Drawer
       open={open}
+      keepMounted
       sx={{
         "& .MuiPaper-root": {
           width: { xs: "100%", md: "460px" },
@@ -34,27 +35,19 @@ const SearchDrawer = ({
           alignItems: "stretch",
         }}
       >
-        <Button
-          variant="contained"
+        <IconButton
+          size="small"
           onClick={onClose}
-          sx={{ alignSelf: "flex-end" }}
-        >
-          Close
-        </Button>
-        <TextField
-          label="Location"
-          type="text"
-          variant="outlined"
           sx={{
-            mt: 3,
-            "& .MuiOutlinedInput-notchedOutline": {
-              borderColor: "text.secondary",
-            },
-            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-              borderColor: "text.primary",
-            },
+            alignSelf: "flex-end",
+            color: "text.primary",
+            transition: "transform 1s ease-in-out",
+            transform: open ? "rotate(450deg)" : "rotate(0deg)",
           }}
-        />
+        >
+          <Close fontSize="large" />
+        </IconButton>
+        <SearchField onSearch={onClose} />
         <LocationList />
       </Stack>
     </Drawer>
