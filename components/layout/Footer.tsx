@@ -1,14 +1,20 @@
+import MuiLink from "@mui/material/Link";
+import Link from "next/link";
 import { Typography, Box } from "@mui/material";
 import React from "react";
 
 const Footer = () => {
   return (
-    <Box mt="auto">
+    <Box mt="auto" mx="auto" textAlign="center" mb={2}>
       <Typography variant="h6">
         created by{" "}
-        <b>
-          <u>bloomkicks</u>
-        </b>{" "}
+        <Link passHref href="https://github.com/bloomkicks">
+          <MuiLink
+            sx={{ fontWeight: "bold", color: "text.primary" }}
+          >
+            bloomkicks
+          </MuiLink>
+        </Link>{" "}
         - devChallenges.io
       </Typography>
     </Box>

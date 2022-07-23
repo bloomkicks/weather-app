@@ -13,7 +13,8 @@ const Moments = ({ moments }: { moments: Moment[] }) => {
         justifyContent="center"
         alignItems="center"
         spacing={3}
-        mt={1}
+        mt={0}
+        mb={7}
       >
         {moments.map(
           ({ type, title, value, measureSign, wind }) => (

@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   Typography,
   Box,
@@ -7,9 +8,14 @@ import {
 } from "@mui/material";
 import MyLocation from "@mui/icons-material/MyLocation";
 import LocationOn from "@mui/icons-material/LocationOn";
+
+import SearchDrawer from "../search/SearchDrawer";
 import Images from "./Images";
 
 const Hero = () => {
+  const [isSearchOpen, setIsSearchOpen] =
+    useState<boolean>(false);
+
   return (
     <Stack
       component="article"
@@ -23,6 +29,7 @@ const Hero = () => {
       pb={6}
       bgcolor="background.paper"
     >
+      <SearchDrawer open={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
       <Stack
         width="100%"
         direction="row"
@@ -30,11 +37,19 @@ const Hero = () => {
         alignItems="center"
         sx={{ px: 2 }}
       >
-        <Button variant="contained">Search for places</Button>
+        <Button
+          variant="contained"
+          onClick={() => setIsSearchOpen(true)}
+        >
+          Search for places
+        </Button>
         <IconButton
           sx={{
             color: "text.primary",
             bgcolor: "primary.main",
+            ":hover": {
+              bgcolor: "primary.dark",
+            },
           }}
           size="small"
         >

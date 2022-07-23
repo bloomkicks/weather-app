@@ -23,6 +23,7 @@ const Images = () => {
         position="absolute"
         src="/weather/heavy-rain.png"
         component="img"
+        width="290px" 
       ></Box>
     </Box>
   );

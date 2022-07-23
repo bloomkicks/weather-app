@@ -1,16 +1,16 @@
-import Place from "../models/Place";
+import Location from "../models/Location";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = {
-  place: new Place('Helsinki')
+  place: new Location('Helsinki')
 }
 
 const placeSlice = createSlice({
   initialState,
   name: 'place',
   reducers: {
-    changePlace(state, action: PayloadAction<Place>) {
-      const place: Place = action.payload
+    changePlace(state, action: PayloadAction<Location>) {
+      const place: Location = action.payload
 
       state.place = place
 
