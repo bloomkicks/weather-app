@@ -5,16 +5,14 @@ import React from "react";
 
 const Moments = ({ moments }: { moments: Moment[] }) => {
   return (
-    <Box mt={6} px={3}>
+    <Box mt={6} px={3} component="article" mb={7}>
       <Typography variant="h2">Today's Highlights</Typography>
       <Grid
         container
-        component="article"
         justifyContent="center"
         alignItems="center"
         spacing={3}
         mt={0}
-        mb={7}
       >
         {moments.map(
           ({ type, title, value, measureSign, wind }) => (

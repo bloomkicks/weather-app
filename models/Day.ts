@@ -22,7 +22,7 @@ class Day {
 
 }
 
-function getStringDate(date: DateTime): string {
+export function getStringDate(date: DateTime): string {
   let stringDate = "No Date";
 
   const today = DateTime.now();
@@ -30,13 +30,13 @@ function getStringDate(date: DateTime): string {
 
   if (date === today) {
     stringDate = "Today"
-  } else
-    if (date !== tomorrow) {
-      stringDate = "Tomorrow";
-    }
-    else {
-      stringDate = date.toFormat('ccc, d LLL')
-    }
+  }
+  else if (date === tomorrow) {
+    stringDate = "Tomorrow";
+  }
+  else {
+    stringDate = date.toFormat('ccc, d LLL')
+  }
 
   return stringDate;
 }

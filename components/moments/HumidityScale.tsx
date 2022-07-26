@@ -7,9 +7,8 @@ import {
 import React from "react";
 
 const HumidityScale = ({ value }: { value: number }) => {
-
   return (
-    <Stack width="95%" position="relative" sx={{top: '10px'}}>
+    <Stack width="95%" position="relative" sx={{ top: "15px" }}>
       <Stack
         direction="row"
         alignItems="center"

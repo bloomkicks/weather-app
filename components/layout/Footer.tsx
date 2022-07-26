@@ -5,7 +5,13 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <Box mt="auto" mx="auto" textAlign="center" mb={2}>
+    <Box
+      component="footer"
+      mx="auto"
+      textAlign="center"
+      mb={2}
+      mt="auto"
+    >
       <Typography variant="h6">
         created by{" "}
         <Link passHref href="https://github.com/bloomkicks">

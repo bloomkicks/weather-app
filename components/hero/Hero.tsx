@@ -1,3 +1,5 @@
+import { getStringDate } from "../../models/Day";
+import { DateTime } from "luxon";
 import { RootState } from "../../store";
 import { useSelector } from "react-redux";
 import React, { useState } from "react";
@@ -13,6 +15,9 @@ import LocationOn from "@mui/icons-material/LocationOn";
 
 import SearchDrawer from "../search/SearchDrawer";
 import Images from "./Images";
+
+const date = DateTime.now();
+const stringDate = date.toFormat("ccc, d LLL");
 
 const Hero = () => {
   const location = useSelector(
@@ -75,22 +80,17 @@ const Hero = () => {
           ℃
         </Typography>
       </Typography>
-      <Typography
-        color="text.secondary"
-        variant="h2"
-        mb={4}
-        mt={2}
-      >
+      <Typography color="text.secondary" variant="h2" mt={2}>
         Shower
       </Typography>
-      <Typography color="text.secondary" mb={2}>
+      <Typography color="text.secondary" mt={7}>
         Today
-        <Box component="span" display="inline-block" mx={2}>
+        <Box component="span" display="inline-block" mx={1}>
           •
         </Box>
-        Fri, 5 Jun
+        {stringDate}
       </Typography>
-      <Typography variant="h3" color="text.secondary" mt={3}>
+      <Typography variant="h3" color="text.secondary" mt={4}>
         <LocationOn
           sx={{ verticalAlign: "bottom", mr: "2px" }}
         />
