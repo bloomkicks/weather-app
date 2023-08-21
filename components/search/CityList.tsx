@@ -1,19 +1,12 @@
-import Location from "../../models/Location";
 import { List, ListItemButton } from "@mui/material";
 import React from "react";
 
-const locations = [
-  new Location("Ufa, Russia"),
-  new Location("Saint Petersburg, Russia"),
-  new Location("Moscow, Russia"),
-  new Location("San Francisco, USA"),
-];
-
-const LocationList = ({}: { locations?: Location[] }) => {
+const CityList = ({ cities }: { cities: string[] }) => {
   return (
     <List sx={{ width: "92%" }}>
-      {locations.map((location) => (
+      {cities.map((city) => (
         <ListItemButton
+          key={city}
           sx={{
             px: 2,
             py: 2.5,
@@ -44,11 +37,11 @@ const LocationList = ({}: { locations?: Location[] }) => {
             my: 1,
           }}
         >
-          {location.location}
+          {city}
         </ListItemButton>
       ))}
     </List>
   );
 };
 
-export default LocationList;
+export default CityList;

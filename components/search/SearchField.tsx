@@ -1,18 +1,16 @@
-import Location from "../../models/Location";
-import { locationActions } from "../../store/location";
-import { useDispatch } from "react-redux";
 import { Stack, Box, Button, TextField } from "@mui/material";
 import Search from "@mui/icons-material/Search";
-import React from "react";
+import { useRef } from "react";
 
-const SearchField = ({ onSearch }: { onSearch: () => void }) => {
-  const dispatch = useDispatch();
+const SearchField = ({
+  onSearch,
+}: {
+  onSearch: (search: string) => void;
+}) => {
+  const searchRef = useRef<HTMLInputElement>();
 
   const clickHandler = () => {
-    dispatch(
-      locationActions.change(new Location("Saint Petersburg"))
-    );
-    onSearch();
+    onSearch(searchRef.current!.value);
   };
 
   return (
@@ -27,9 +25,10 @@ const SearchField = ({ onSearch }: { onSearch: () => void }) => {
     >
       <Box position="relative" width="100%">
         <TextField
-          placeholder={"search location"}
+          placeholder={"Find weather for your city"}
           type="text"
           variant="outlined"
+          inputRef={searchRef}
           sx={{
             left: 0,
             top: 0,

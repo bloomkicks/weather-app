@@ -1,4 +1,3 @@
-import { getStringDate } from "../../models/Day";
 import { DateTime } from "luxon";
 import { RootState } from "../../store";
 import { useSelector } from "react-redux";
@@ -20,11 +19,10 @@ const date = DateTime.now();
 const stringDate = date.toFormat("ccc, d LLL");
 
 const Hero = () => {
-  const location = useSelector(
-    (state: RootState) => state.location.current
+  const currentWeather = useSelector(
+    (state: RootState) => state.currentWeather
   );
-  const [isSearchOpen, setIsSearchOpen] =
-    useState<boolean>(false);
+  const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
 
   return (
     <Stack
@@ -71,7 +69,7 @@ const Hero = () => {
       </Stack>
       <Images />
       <Typography variant="h1">
-        15
+        {currentWeather.avgTemperature}
         <Typography
           variant="h2"
           component="span"
@@ -81,7 +79,8 @@ const Hero = () => {
         </Typography>
       </Typography>
       <Typography color="text.secondary" variant="h2" mt={2}>
-        Shower
+        {currentWeather.weatherType[0].toUpperCase() +
+          currentWeather.weatherType.slice(1)}
       </Typography>
       <Typography color="text.secondary" mt={7}>
         Today
@@ -91,10 +90,8 @@ const Hero = () => {
         {stringDate}
       </Typography>
       <Typography variant="h3" color="text.secondary" mt={4}>
-        <LocationOn
-          sx={{ verticalAlign: "bottom", mr: "2px" }}
-        />
-        {location.location}
+        <LocationOn sx={{ verticalAlign: "bottom", mr: "2px" }} />
+        Saint-Petersburg
       </Typography>
     </Stack>
   );

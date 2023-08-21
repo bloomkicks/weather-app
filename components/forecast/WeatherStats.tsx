@@ -1,8 +1,16 @@
+import { DateTime } from "luxon";
 import { Box, Stack, Typography, Paper } from "@mui/material";
-import TDay from "../../models/Day";
+import type { WeatherStats as IWeatherStats } from "../../models/weather-stats";
 import React from "react";
 
-const Day = (day: TDay) => {
+const WeatherStats = ({
+  minTemperature,
+  maxTemperature,
+  weatherType,
+  index,
+}: IWeatherStats & { index: number }) => {
+  const date = DateTime.now().plus({ day: index });
+
   return (
     <Paper
       component="section"
@@ -15,9 +23,11 @@ const Day = (day: TDay) => {
         py={2}
         spacing={1}
       >
-        <Typography variant="body2">{day.stringDate}</Typography>
+        <Typography variant="body2">
+          {date.toFormat("ccc, LLL dd")}
+        </Typography>
         <Box
-          src={day.weather.imgSrc}
+          src={`/weather/${weatherType}.png`}
           component="img"
           height="65px"
           position="relative"
@@ -30,11 +40,9 @@ const Day = (day: TDay) => {
           spacing={3}
           pt={3}
         >
-          <Typography variant="body2">
-            {day.temperature!.max}℃
-          </Typography>
+          <Typography variant="body2">{maxTemperature}℃</Typography>
           <Typography variant="body2" color="text.secondary">
-            {day.temperature!.min}℃
+            {minTemperature}℃
           </Typography>
         </Stack>
       </Stack>
@@ -42,4 +50,4 @@ const Day = (day: TDay) => {
   );
 };
 
-export default Day;
+export default WeatherStats;

@@ -1,10 +1,13 @@
-import { placeReducer } from './place'
-import { locationReducer } from './location'
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore } from "@reduxjs/toolkit";
+import { currentWeatherReducer } from "./current-weather";
+import { forecastWeatherReducer } from "./forecast-weather";
 
 const store = configureStore({
-  reducer: { place: placeReducer, location: locationReducer }
-})
+  reducer: {
+    currentWeather: currentWeatherReducer,
+    forecastWeather: forecastWeatherReducer,
+  },
+});
 
-export type RootState = ReturnType<typeof store.getState>
-export default store
+export type RootState = ReturnType<typeof store.getState>;
+export default store;

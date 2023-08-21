@@ -23,6 +23,7 @@ const HumidityScale = ({ value }: { value: number }) => {
             variant="caption"
             color="text.secondary"
             fontSize={12}
+            key={scale}
           >
             {scale}
           </Typography>

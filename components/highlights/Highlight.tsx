@@ -1,11 +1,16 @@
+import type { Highlight as IHighlight } from "../../models/highlights";
 import Arrow from "@mui/icons-material/ArrowBack";
 import React from "react";
 import { Stack, Paper, Typography } from "@mui/material";
 
-import Moment from "../../models/Moment";
 import HumidityScale from "./HumidityScale";
 
-const MomentItem = (moment: Moment) => {
+const Highlight = ({
+  title,
+  value,
+  measureUnit,
+  wind,
+}: IHighlight) => {
   return (
     <Paper>
       <Stack
@@ -16,35 +21,35 @@ const MomentItem = (moment: Moment) => {
         padding={3}
         spacing={3}
       >
-        <Typography variant="h3">{moment.title}</Typography>
+        <Typography variant="h3">{title}</Typography>
         <Typography variant="h2">
-          {moment.value}
+          {value}
           <Typography
             variant="inherit"
             color="text.secondary"
             display="inline-block"
             ml={1}
           >
-            {moment.measureSign}
+            {measureUnit}
           </Typography>
         </Typography>
-        {moment.type == "humidity" && (
-          <HumidityScale value={Number(moment.value)} />
+        {measureUnit === "%" && (
+          <HumidityScale value={parseInt(value)} />
         )}
-        {moment.type == "wind" && (
+        {!!wind && (
           <Typography color="text.secondary">
             <Arrow
               sx={{
-                display: 'inline-block',
+                display: "inline-block",
                 mr: 1,
-                verticalAlign: 'middle',
-                borderRadius: '50%',
-                border: '1px solid',
-                borderColor: 'text.secondary',
-                transform: `rotate(${moment.wind!.rotation!})`,
+                verticalAlign: "middle",
+                borderRadius: "50%",
+                border: "1px solid",
+                borderColor: "text.secondary",
+                transform: `rotate(${wind!.rotation!})`,
               }}
             />
-            {moment.wind!.direction}
+            {wind!.direction}
           </Typography>
         )}
       </Stack>
@@ -52,4 +57,4 @@ const MomentItem = (moment: Moment) => {
   );
 };
 
-export default MomentItem;
+export default Highlight;
