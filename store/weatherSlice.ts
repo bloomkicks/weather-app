@@ -1,88 +1,105 @@
+import getWeatherCondition from "../features/get-weather-condition";
 import { createSlice } from "@reduxjs/toolkit";
 import type { Highlight } from "../models/highlights";
 import {
-  WeatherType,
+  WeatherCondition,
   type WeatherStats,
 } from "../models/weather-stats";
-import type { PayloadAction } from "@reduxjs/toolkit";
-
-const wind = {
-  title: "Wind",
-  value: "7",
-  measureUnit: "mph",
-  wind: { direction: "SE" },
-};
-const humidity = {
-  title: "Humidity",
-  value: "4",
-  measureUnit: "%",
-};
-const visibility = {
-  title: "Visibility",
-  value: "6.4",
-  measureUnit: "miles",
-};
-const airPressure = {
-  title: "Air Pressure",
-  value: "998",
-  measureUnit: "mb",
-};
+import type { Dispatch, PayloadAction } from "@reduxjs/toolkit";
 
 interface WeatherState {
-  forecast: WeatherStats[];
-  todaysHighlights: Highlight[];
   location: string;
+  forecast: (WeatherStats | null)[];
+  todaysHighlights?: Highlight[];
 }
 
 const initialState: WeatherState = {
   location: "Saint-Petersburg",
   forecast: [
     {
-      temperature: 12,
-      minTemperature: 10,
-      maxTemperature: 14,
-      weatherType: WeatherType.SNOW,
+      weatherCondition: WeatherCondition.CLOUDY,
+      temperature: "No",
+      minTemperature: "No",
+      maxTemperature: "No",
     },
-    {
-      temperature: 14,
-      minTemperature: 11,
-      maxTemperature: 17,
-      weatherType: WeatherType.HAIL,
-    },
-    {
-      temperature: 16,
-      minTemperature: 15,
-      maxTemperature: 17,
-      weatherType: WeatherType.CLEAR,
-    },
-    {
-      temperature: 12,
-      minTemperature: 10,
-      maxTemperature: 13,
-      weatherType: WeatherType.SHOWER,
-    },
-    {
-      temperature: 11,
-      minTemperature: 10,
-      maxTemperature: 13,
-      weatherType: WeatherType.HEAVY_RAIN,
-    },
+    null,
+    null,
+    null,
+    null,
   ],
-  todaysHighlights: [wind, humidity, visibility, airPressure],
 };
 
 const weatherSlice = createSlice({
   name: "weather",
   initialState,
   reducers: {
-    updateLocation(
-      state: WeatherState,
-      action: PayloadAction<string>
-    ) {
+    setLocation(state: WeatherState, action: PayloadAction<string>) {
       state.location = action.payload;
+    },
+    setWeather(state: WeatherState, action: PayloadAction<any>) {
+      state.forecast = action.payload.map((forecastDay: any) => {
+        return {
+          temperature: Math.floor(forecastDay.day.avgtemp_c),
+          minTemperature: Math.floor(forecastDay.day.mintemp_c),
+          maxTemperature: Math.floor(forecastDay.day.maxtemp_c),
+          weatherCondition: getWeatherCondition(
+            forecastDay.day.condition.text
+          ),
+        };
+      });
+      const date = new Date();
+      const today = action.payload[0].hour[date.getHours()];
+      state.todaysHighlights = [
+        {
+          title: "Wind",
+          measureUnit: "mph",
+          value: today.wind_mph,
+          wind: {
+            direction: today.wind_dir.slice(0, 2),
+            rotationDegree: today.wind_degree,
+          },
+        },
+        {
+          title: "Humidity",
+          measureUnit: "%",
+          value: today.humidity,
+        },
+        {
+          title: "Visibility",
+          measureUnit: "miles",
+          value: today.vis_miles,
+        },
+        {
+          title: "Air Pressure",
+          measureUnit: "mb",
+          value: today.pressure_mb,
+        },
+      ];
     },
   },
 });
 
 export const weatherActions = weatherSlice.actions;
+
+export const updateWeatherThunk = (location: string) => {
+  return (dispatch: Dispatch) => {
+    fetch(
+      `http://api.weatherapi.com/v1/forecast.json?key=${process.env.WEATHER_API_KEY}&q=${location}&days=5`
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        dispatch(weatherActions.setLocation(data.location.name));
+        dispatch(
+          weatherActions.setWeather(data.forecast.forecastday)
+        );
+      })
+      .catch((err: any) => {
+        throw new Error(err.message);
+      });
+  };
+};
+
 export const weatherReducer = weatherSlice.reducer;

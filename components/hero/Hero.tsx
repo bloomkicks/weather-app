@@ -6,7 +6,7 @@ import { Typography, Box, Stack } from "@mui/material";
 import LocationOn from "@mui/icons-material/LocationOn";
 
 import SearchDrawer from "../search/SearchDrawer";
-import CityActions from "./CityActions";
+import LocationActions from "./LocationActions";
 import Images from "./Images";
 
 const date = DateTime.now();
@@ -38,10 +38,10 @@ const Hero = () => {
         open={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
       />
-      <CityActions onOpenSearch={openSearchHandler} />
-      <Images weatherType={forecast[0].weatherType} />
+      <LocationActions onOpenSearch={openSearchHandler} />
+      <Images weatherCondition={forecast[0]!.weatherCondition!} />
       <Typography variant="h1">
-        {forecast[0].temperature}
+        {forecast[0]!.temperature}
         <Typography
           variant="h2"
           component="span"
@@ -51,8 +51,11 @@ const Hero = () => {
         </Typography>
       </Typography>
       <Typography color="text.secondary" variant="h2" mt={2}>
-        {forecast[0].weatherType[0].toUpperCase() +
-          forecast[0].weatherType.slice(1)}
+        {forecast[0]!.weatherCondition![0].toUpperCase() +
+          forecast[0]!
+            .weatherCondition!.split("-")
+            .join(" ")
+            .slice(1)}
       </Typography>
       <Typography color="text.secondary" mt={7}>
         Today

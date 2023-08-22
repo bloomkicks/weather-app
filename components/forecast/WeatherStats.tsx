@@ -1,12 +1,15 @@
 import { DateTime } from "luxon";
 import { Box, Stack, Typography, Paper } from "@mui/material";
-import type { WeatherStats as IWeatherStats } from "../../models/weather-stats";
+import {
+  WeatherCondition,
+  type WeatherStats as IWeatherStats,
+} from "../../models/weather-stats";
 import React from "react";
 
 const WeatherStats = ({
-  minTemperature,
-  maxTemperature,
-  weatherType,
+  minTemperature = "No",
+  maxTemperature = "No",
+  weatherCondition = WeatherCondition.CLOUDY,
   index,
 }: IWeatherStats & { index: number }) => {
   const date = DateTime.now().plus({ day: index });
@@ -27,7 +30,7 @@ const WeatherStats = ({
           {date.toFormat("ccc, LLL dd")}
         </Typography>
         <Box
-          src={`/weather/${weatherType}.png`}
+          src={`/weather/${weatherCondition}.png`}
           component="img"
           height="65px"
           position="relative"

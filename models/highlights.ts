@@ -9,17 +9,12 @@ export enum WindDirections {
   NW = "45deg",
 }
 
-type Direction = keyof typeof WindDirections;
-type Rotation = (typeof WindDirections)[Direction];
-
-export interface Wind {
-  direction: Direction;
-  rotation?: Rotation;
-}
-
 export interface Highlight {
   title: string;
   value: string;
   measureUnit: string;
-  wind?: Wind;
+  wind?: {
+    direction: string;
+    rotationDegree: number;
+  };
 }

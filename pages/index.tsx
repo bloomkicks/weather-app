@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { updateWeatherThunk } from "../store/weatherSlice";
+import { useState, useEffect } from "react";
 import type { NextPage } from "next";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
@@ -10,13 +12,11 @@ import Footer from "../components/layout/Footer";
 import Forecast from "../components/forecast/Forecast";
 
 const Home: NextPage = () => {
-  const [isSearchActive, setIsSearchActive] =
-    useState<boolean>(false);
+  const dispatch = useDispatch();
 
-  function searchToggle() {
-    console.log(!isSearchActive);
-    setIsSearchActive((prev) => !prev);
-  }
+  useEffect(() => {
+    dispatch(updateWeatherThunk("auto:ip"));
+  }, [dispatch]);
 
   return (
     <Layout>

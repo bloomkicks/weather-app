@@ -1,6 +1,6 @@
 import type { RootState } from "../../store";
 import type { WeatherStats as IWeatherStats } from "../../models/weather-stats";
-import { Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import WeatherStats from "./WeatherStats";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -23,9 +23,12 @@ const Forecast = () => {
         mt: 3,
       }}
     >
-      {forecast.map((weatherStats: IWeatherStats, i) => (
+      {forecast.map((weatherStats: IWeatherStats | null, i) => (
         <Grid item key={i}>
-          <WeatherStats {...weatherStats} index={i} />
+          <WeatherStats
+            {...(weatherStats ? weatherStats : {})}
+            index={i}
+          />
         </Grid>
       ))}
     </Grid>

@@ -1,13 +1,20 @@
+import { useDispatch } from "react-redux";
+import { updateWeatherThunk } from "../../store/weatherSlice";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MyLocation from "@mui/icons-material/MyLocation";
 
-const CityActions = ({
+const LocationActions = ({
   onOpenSearch,
 }: {
   onOpenSearch: () => void;
 }) => {
+  const dispatch = useDispatch();
+  function setCurrentLocationHandler() {
+    dispatch(updateWeatherThunk("auto:ip"));
+  }
+
   return (
     <Stack
       width="100%"
@@ -28,6 +35,7 @@ const CityActions = ({
           },
         }}
         size="small"
+        onClick={setCurrentLocationHandler}
       >
         <MyLocation fontSize="large" />
       </IconButton>
@@ -35,4 +43,4 @@ const CityActions = ({
   );
 };
 
-export default CityActions;
+export default LocationActions;

@@ -15,7 +15,7 @@ const SearchField = ({
       const value = searchRef.current!.value;
       if (timeout !== null) clearTimeout(timeout);
       timeout = setTimeout(
-        () => onSearch(value.length > 2 ? value : "ClEAR_SEARCH"),
+        () => onSearch(value.length > 2 ? value : "CLEAR_SEARCH"),
         500
       );
     };

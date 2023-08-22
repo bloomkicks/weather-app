@@ -1,17 +1,10 @@
 import SearchField from "./SearchField";
 import Close from "@mui/icons-material/Close";
-import { Drawer, IconButton, Stack, Button } from "@mui/material";
+import { Drawer, IconButton, Stack } from "@mui/material";
 import { useState } from "react";
 
-import CityList from "./LocationList";
+import LocationList from "./LocationList";
 import React from "react";
-
-const allLocations = [
-  "Ufa, Russia",
-  "Saint Petersburg, Russia",
-  "Moscow, Russia",
-  "San Francisco, USA",
-];
 
 const SearchDrawer = ({
   open,
@@ -21,16 +14,19 @@ const SearchDrawer = ({
   onClose: () => void;
 }) => {
   const [locations, setLocations] = useState<string[]>([]);
-  function searchHandler(search: string): void {
-    setLocations(
-      search === "CLEAR_SEARCH"
-        ? []
-        : allLocations.filter((location) =>
-            location
-              .toLowerCase()
-              .includes(search.trim().toLowerCase())
-          )
-    );
+  async function searchHandler(search: string) {
+    if (search === "CLEAR_SEARCH") return;
+    try {
+      const response = await fetch(
+        `http://api.weatherapi.com/v1/search.json?key=${process.env.WEATHER_API_KEY}&q=${search}`
+      );
+      const locations = await response.json();
+      setLocations(
+        locations.map((loc: any) => `${loc.name}, ${loc.country}`)
+      );
+    } catch (err: any) {
+      throw new Error(err.message);
+    }
   }
 
   return (
@@ -64,7 +60,7 @@ const SearchDrawer = ({
           <Close fontSize="large" />
         </IconButton>
         <SearchField onSearch={searchHandler} />
-        <CityList locations={locations} onSetLocation={onClose} />
+        <LocationList locations={locations} onSetLocation={onClose} />
       </Stack>
     </Drawer>
   );

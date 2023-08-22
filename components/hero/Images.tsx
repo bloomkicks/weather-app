@@ -1,8 +1,11 @@
-import { WeatherType } from "../../models/weather-stats";
-import Image from "next/image";
+import { WeatherCondition } from "../../models/weather-stats";
 import Box from "@mui/material/Box";
 
-const Images = ({ weatherType }: { weatherType: WeatherType }) => {
+const Images = ({
+  weatherCondition,
+}: {
+  weatherCondition: WeatherCondition;
+}) => {
   return (
     <Box
       position="relative"
@@ -23,7 +26,7 @@ const Images = ({ weatherType }: { weatherType: WeatherType }) => {
       ></Box>
       <Box
         position="absolute"
-        src={`/weather/${weatherType}.png`}
+        src={`/weather/${weatherCondition}.png`}
         component="img"
         width="290px"
         sx={{ ml: -2 }}

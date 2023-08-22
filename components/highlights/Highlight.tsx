@@ -47,9 +47,7 @@ const Highlight = ({
                 borderRadius: "50%",
                 border: "1px solid",
                 borderColor: "text.secondary",
-                transform: `rotate(${
-                  WindDirections[wind.direction]
-                })`,
+                transform: `rotate(${wind.rotationDegree}deg)`,
               }}
             />
             <span style={{ verticalAlign: "middle" }}>

@@ -1,9 +1,9 @@
-import { weatherActions } from "../../store/weatherSlice";
 import { useDispatch } from "react-redux";
 import { List, ListItemButton } from "@mui/material";
+import { updateWeatherThunk } from "../../store/weatherSlice";
 import React from "react";
 
-const CityList = ({
+const LocationList = ({
   locations,
   onSetLocation,
 }: {
@@ -14,16 +14,16 @@ const CityList = ({
 
   function setLocationHandler(location: string) {
     return function () {
-      dispatch(weatherActions.updateLocation(location));
+      dispatch(updateWeatherThunk(location.split(",")[0]));
       onSetLocation();
     };
   }
 
   return (
     <List sx={{ width: "92%" }}>
-      {locations.map((location: string) => (
+      {locations.map((location: string, i) => (
         <ListItemButton
-          key={location}
+          key={location + i}
           onClick={setLocationHandler(location)}
           sx={{
             px: 2,
@@ -62,4 +62,4 @@ const CityList = ({
   );
 };
 
-export default CityList;
+export default LocationList;

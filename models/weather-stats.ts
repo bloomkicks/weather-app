@@ -1,19 +1,19 @@
-export enum WeatherType {
+export enum WeatherCondition {
   CLEAR = "clear",
-  HAIL = "hail",
   LIGHT = "light",
+  CLOUDY = "cloudy",
   LIGHT_RAIN = "light-rain",
-  HEAVY = "heavy",
   HEAVY_RAIN = "heavy-rain",
-  SLEET = "sleet",
-  SNOW = "snow",
   SHOWER = "shower",
   THUNDER = "thunder",
+  SNOW = "snow",
+  SLEET = "sleet",
+  HAIL = "hail",
 }
 
 export interface WeatherStats {
-  minTemperature: number;
-  maxTemperature: number;
-  temperature: number;
-  weatherType: WeatherType;
+  minTemperature?: number | string;
+  maxTemperature?: number | string;
+  temperature?: number | string;
+  weatherCondition?: WeatherCondition;
 }
