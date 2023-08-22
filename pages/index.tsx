@@ -29,7 +29,7 @@ const Home: NextPage = () => {
         <Hero />
         <Box
           height="100%"
-          maxWidth={1000}
+          maxWidth={{ xs: 520, md: 1000 }}
           mx="auto"
           sx={{ mt: { md: 4 } }}
         >

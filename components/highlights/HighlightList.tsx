@@ -6,8 +6,8 @@ import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
 
 const HighlightList = () => {
-  const currentWeather = useSelector(
-    (state: RootState) => state.currentWeather
+  const { todaysHighlights } = useSelector(
+    (state: RootState) => state.weather
   );
 
   return (
@@ -20,7 +20,7 @@ const HighlightList = () => {
         spacing={3}
         mt={0}
       >
-        {currentWeather.highlights.map(
+        {todaysHighlights.map(
           ({ title, value, measureUnit, wind }: IHighlight) => (
             <Grid
               item

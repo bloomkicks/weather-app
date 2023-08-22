@@ -1,6 +1,5 @@
 import {
   Stack,
-  Box,
   Typography,
   LinearProgress,
 } from "@mui/material";

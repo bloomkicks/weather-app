@@ -1,7 +1,8 @@
+import { WeatherType } from "../../models/weather-stats";
 import Image from "next/image";
 import Box from "@mui/material/Box";
 
-const Images = () => {
+const Images = ({ weatherType }: { weatherType: WeatherType }) => {
   return (
     <Box
       position="relative"
@@ -15,15 +16,17 @@ const Images = () => {
         sx={{
           opacity: 0.2,
           flex: "1 0 150%",
+          maxWidth: 700,
         }}
         src="/Cloud-background.png"
         component="img"
       ></Box>
       <Box
         position="absolute"
-        src="/weather/heavy-rain.png"
+        src={`/weather/${weatherType}.png`}
         component="img"
-        width="290px" 
+        width="290px"
+        sx={{ ml: -2 }}
       ></Box>
     </Box>
   );

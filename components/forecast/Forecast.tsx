@@ -6,8 +6,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const Forecast = () => {
-  const forecastWeather = useSelector(
-    (state: RootState) => state.forecastWeather
+  const { forecast } = useSelector(
+    (state: RootState) => state.weather
   );
 
   return (
@@ -23,7 +23,7 @@ const Forecast = () => {
         mt: 3,
       }}
     >
-      {forecastWeather.map((weatherStats: IWeatherStats, i) => (
+      {forecast.map((weatherStats: IWeatherStats, i) => (
         <Grid item key={i}>
           <WeatherStats {...weatherStats} index={i} />
         </Grid>

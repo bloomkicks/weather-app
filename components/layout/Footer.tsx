@@ -10,14 +10,13 @@ const Footer = () => {
       mx="auto"
       textAlign="center"
       mb={2}
+      px={2}
       mt="auto"
     >
       <Typography variant="h6">
         created by{" "}
         <Link passHref href="https://github.com/bloomkicks">
-          <MuiLink
-            sx={{ fontWeight: "bold", color: "text.primary" }}
-          >
+          <MuiLink sx={{ fontWeight: "bold", color: "text.primary" }}>
             bloomkicks
           </MuiLink>
         </Link>{" "}

@@ -9,6 +9,17 @@ const SearchField = ({
 }) => {
   const searchRef = useRef<HTMLInputElement>();
 
+  const changeHandlerDebounce = () => {
+    let timeout: NodeJS.Timeout | null = null;
+    return function () {
+      const value = searchRef.current!.value;
+      if (timeout !== null) clearTimeout(timeout);
+      timeout = setTimeout(
+        () => onSearch(value.length > 2 ? value : "ClEAR_SEARCH"),
+        500
+      );
+    };
+  };
   const clickHandler = () => {
     onSearch(searchRef.current!.value);
   };
@@ -19,16 +30,20 @@ const SearchField = ({
       mt={3}
       sx={{
         justfiyContent: "stretch",
-        alignItems: "flex-start",
+        alignItems: "stretch",
       }}
       spacing={1}
     >
       <Box position="relative" width="100%">
         <TextField
-          placeholder={"Find weather for your city"}
+          placeholder="Find weather for your city"
           type="text"
           variant="outlined"
+          size="small"
           inputRef={searchRef}
+          inputProps={{
+            onChange: changeHandlerDebounce(),
+          }}
           sx={{
             left: 0,
             top: 0,
@@ -40,17 +55,17 @@ const SearchField = ({
               borderColor: "text.primary",
             },
             "& .MuiInputBase-input": {
-              pl: 6.5,
+              pl: "42px",
             },
           }}
         ></TextField>
         <Search
-          fontSize="large"
+          fontSize="medium"
           sx={{
             position: "absolute",
-            left: "8px",
+            left: "12px",
             top: "50%",
-            transform: "translateY(-50%)",
+            transform: "translateY(-48%)",
             color: "text.secondary",
           }}
         />

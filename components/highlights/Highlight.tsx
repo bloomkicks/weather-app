@@ -1,3 +1,4 @@
+import { WindDirections } from "../../models/highlights";
 import type { Highlight as IHighlight } from "../../models/highlights";
 import Arrow from "@mui/icons-material/ArrowBack";
 import React from "react";
@@ -46,10 +47,14 @@ const Highlight = ({
                 borderRadius: "50%",
                 border: "1px solid",
                 borderColor: "text.secondary",
-                transform: `rotate(${wind!.rotation!})`,
+                transform: `rotate(${
+                  WindDirections[wind.direction]
+                })`,
               }}
             />
-            {wind!.direction}
+            <span style={{ verticalAlign: "middle" }}>
+              {wind.direction}
+            </span>
           </Typography>
         )}
       </Stack>

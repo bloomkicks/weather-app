@@ -1,4 +1,4 @@
-enum Directions {
+export enum WindDirections {
   N = "90deg",
   NE = "135deg",
   E = "180deg",
@@ -9,8 +9,8 @@ enum Directions {
   NW = "45deg",
 }
 
-type Direction = keyof typeof Directions;
-type Rotation = (typeof Directions)[Direction];
+type Direction = keyof typeof WindDirections;
+type Rotation = (typeof WindDirections)[Direction];
 
 export interface Wind {
   direction: Direction;

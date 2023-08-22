@@ -3,10 +3,10 @@ import Close from "@mui/icons-material/Close";
 import { Drawer, IconButton, Stack, Button } from "@mui/material";
 import { useState } from "react";
 
-import CityList from "./CityList";
+import CityList from "./LocationList";
 import React from "react";
 
-const allCities = [
+const allLocations = [
   "Ufa, Russia",
   "Saint Petersburg, Russia",
   "Moscow, Russia",
@@ -20,12 +20,16 @@ const SearchDrawer = ({
   open: boolean;
   onClose: () => void;
 }) => {
-  const [cities, setCities] = useState<string[]>([]);
+  const [locations, setLocations] = useState<string[]>([]);
   function searchHandler(search: string): void {
-    setCities(
-      allCities.filter((city) =>
-        city.toLowerCase().includes(search.trim().toLowerCase())
-      )
+    setLocations(
+      search === "CLEAR_SEARCH"
+        ? []
+        : allLocations.filter((location) =>
+            location
+              .toLowerCase()
+              .includes(search.trim().toLowerCase())
+          )
     );
   }
 
@@ -53,14 +57,14 @@ const SearchDrawer = ({
           sx={{
             alignSelf: "flex-end",
             color: "text.primary",
-            transition: "transform 1s ease-in-out",
-            transform: open ? "rotate(450deg)" : "rotate(0deg)",
+            transition: "transform 500ms ease-in-out",
+            transform: open ? "rotate(180deg)" : "rotate(0deg)",
           }}
         >
           <Close fontSize="large" />
         </IconButton>
         <SearchField onSearch={searchHandler} />
-        <CityList cities={cities} />
+        <CityList locations={locations} onSetLocation={onClose} />
       </Stack>
     </Drawer>
   );
