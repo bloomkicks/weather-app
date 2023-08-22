@@ -1,7 +1,9 @@
-import { useDispatch } from "react-redux";
-import { updateWeatherThunk } from "../store/weatherSlice";
-import { useState, useEffect } from "react";
+import type { AppDispatch } from "../store";
 import type { NextPage } from "next";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { updateWeatherThunk } from "../store/weatherSlice";
+
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 
@@ -12,7 +14,7 @@ import Footer from "../components/layout/Footer";
 import Forecast from "../components/forecast/Forecast";
 
 const Home: NextPage = () => {
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
     dispatch(updateWeatherThunk("auto:ip"));
@@ -29,7 +31,7 @@ const Home: NextPage = () => {
         <Hero />
         <Box
           height="100%"
-          maxWidth={{ xs: 520, md: 1000 }}
+          maxWidth={{ xs: 520, lg: 900 }}
           mx="auto"
           sx={{ mt: { md: 4 } }}
         >

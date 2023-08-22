@@ -1,10 +1,12 @@
-import SearchField from "./SearchField";
-import Close from "@mui/icons-material/Close";
-import { Drawer, IconButton, Stack } from "@mui/material";
 import { useState } from "react";
 
+import Drawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import Stack from "@mui/material/Stack";
+import Close from "@mui/icons-material/Close";
+
 import LocationList from "./LocationList";
-import React from "react";
+import SearchField from "./SearchField";
 
 const SearchDrawer = ({
   open,
@@ -14,6 +16,7 @@ const SearchDrawer = ({
   onClose: () => void;
 }) => {
   const [locations, setLocations] = useState<string[]>([]);
+
   async function searchHandler(search: string) {
     if (search === "CLEAR_SEARCH") return;
     try {

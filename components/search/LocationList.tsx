@@ -1,7 +1,9 @@
+import type { AppDispatch } from "../../store";
 import { useDispatch } from "react-redux";
-import { List, ListItemButton } from "@mui/material";
 import { updateWeatherThunk } from "../../store/weatherSlice";
-import React from "react";
+
+import List from "@mui/material/List";
+import ListItemButton from "@mui/material/ListItemButton";
 
 const LocationList = ({
   locations,
@@ -10,7 +12,7 @@ const LocationList = ({
   locations: string[];
   onSetLocation: () => void;
 }) => {
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   function setLocationHandler(location: string) {
     return function () {

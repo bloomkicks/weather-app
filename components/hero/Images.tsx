@@ -1,4 +1,5 @@
 import { WeatherCondition } from "../../models/weather-stats";
+
 import Box from "@mui/material/Box";
 
 const Images = ({
@@ -18,15 +19,20 @@ const Images = ({
       <Box
         sx={{
           opacity: 0.2,
+          mt: -1,
           flex: "1 0 150%",
+          width: "auto",
           maxWidth: 700,
+          maxHeight: { xs: 350, sm: "100%" },
+          objectFit: "contain",
+          objectPosition: "center",
         }}
-        src="/Cloud-background.png"
+        src="./cloud-background.png"
         component="img"
       ></Box>
       <Box
         position="absolute"
-        src={`/weather/${weatherCondition}.png`}
+        src={`./weather-conditions/${weatherCondition}.png`}
         component="img"
         width="290px"
         sx={{ ml: -2 }}

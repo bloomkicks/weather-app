@@ -1,10 +1,13 @@
-import { DateTime } from "luxon";
-import { Box, Stack, Typography, Paper } from "@mui/material";
 import {
   WeatherCondition,
   type WeatherStats as IWeatherStats,
 } from "../../models/weather-stats";
-import React from "react";
+import { DateTime } from "luxon";
+
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
 
 const WeatherStats = ({
   minTemperature = "No",
@@ -30,7 +33,7 @@ const WeatherStats = ({
           {date.toFormat("ccc, LLL dd")}
         </Typography>
         <Box
-          src={`/weather/${weatherCondition}.png`}
+          src={`./weather-conditions/${weatherCondition}.png`}
           component="img"
           height="65px"
           position="relative"

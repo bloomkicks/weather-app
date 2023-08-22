@@ -1,11 +1,12 @@
-import getWeatherCondition from "../features/get-weather-condition";
-import { createSlice } from "@reduxjs/toolkit";
+import type { Dispatch, PayloadAction } from "@reduxjs/toolkit";
 import type { Highlight } from "../models/highlights";
+import { createSlice } from "@reduxjs/toolkit";
+
+import getWeatherCondition from "../features/get-weather-condition";
 import {
   WeatherCondition,
   type WeatherStats,
 } from "../models/weather-stats";
-import type { Dispatch, PayloadAction } from "@reduxjs/toolkit";
 
 interface WeatherState {
   location: string;

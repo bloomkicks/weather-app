@@ -1,8 +1,11 @@
-import { DateTime } from "luxon";
-import { RootState } from "../../store";
+import type { RootState } from "../../store";
 import { useSelector } from "react-redux";
 import React, { useState } from "react";
-import { Typography, Box, Stack } from "@mui/material";
+import { DateTime } from "luxon";
+
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
 import LocationOn from "@mui/icons-material/LocationOn";
 
 import SearchDrawer from "../search/SearchDrawer";
@@ -16,9 +19,11 @@ const Hero = () => {
   const { forecast, location } = useSelector(
     (state: RootState) => state.weather
   );
-  const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
-  function openSearchHandler() {
-    setIsSearchOpen(true);
+  const [isSearchDrawerOpen, setIsSearchDrawerOpen] =
+    useState<boolean>(false);
+
+  function openSearchDrawerHandler() {
+    setIsSearchDrawerOpen(true);
   }
 
   return (
@@ -28,17 +33,17 @@ const Hero = () => {
       position={{ xs: "static", md: "fixed" }}
       left="0"
       top="0"
-      width={{ xs: "100%", md: "460px" }}
+      width={{ xs: "100%", md: "460px", xl: "500px" }}
       height={{ xs: "auto", md: "100%" }}
       pt={2}
       pb={6}
       bgcolor="background.paper"
     >
       <SearchDrawer
-        open={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
+        open={isSearchDrawerOpen}
+        onClose={() => setIsSearchDrawerOpen(false)}
       />
-      <LocationActions onOpenSearch={openSearchHandler} />
+      <LocationActions onOpenSearch={openSearchDrawerHandler} />
       <Images weatherCondition={forecast[0]!.weatherCondition!} />
       <Typography variant="h1">
         {forecast[0]!.temperature}

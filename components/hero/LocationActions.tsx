@@ -1,5 +1,7 @@
+import type { AppDispatch } from "../../store";
 import { useDispatch } from "react-redux";
 import { updateWeatherThunk } from "../../store/weatherSlice";
+
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
@@ -10,7 +12,8 @@ const LocationActions = ({
 }: {
   onOpenSearch: () => void;
 }) => {
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
+
   function setCurrentLocationHandler() {
     dispatch(updateWeatherThunk("auto:ip"));
   }

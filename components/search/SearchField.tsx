@@ -1,6 +1,10 @@
-import { Stack, Box, Button, TextField } from "@mui/material";
-import Search from "@mui/icons-material/Search";
 import { useRef } from "react";
+
+import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Search from "@mui/icons-material/Search";
 
 const SearchField = ({
   onSearch,
@@ -9,20 +13,23 @@ const SearchField = ({
 }) => {
   const searchRef = useRef<HTMLInputElement>();
 
-  const changeHandlerDebounce = () => {
+  function changeHandlerDebounce() {
     let timeout: NodeJS.Timeout | null = null;
+
     return function () {
       const value = searchRef.current!.value;
+
       if (timeout !== null) clearTimeout(timeout);
       timeout = setTimeout(
         () => onSearch(value.length > 2 ? value : "CLEAR_SEARCH"),
         500
       );
     };
-  };
-  const clickHandler = () => {
+  }
+
+  function clickHandler() {
     onSearch(searchRef.current!.value);
-  };
+  }
 
   return (
     <Stack

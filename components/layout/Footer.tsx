@@ -1,7 +1,7 @@
 import MuiLink from "@mui/material/Link";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 import Link from "next/link";
-import { Typography, Box } from "@mui/material";
-import React from "react";
 
 const Footer = () => {
   return (
@@ -9,8 +9,8 @@ const Footer = () => {
       component="footer"
       mx="auto"
       textAlign="center"
-      mb={2}
-      px={2}
+      mb={4}
+      px={6}
       mt="auto"
     >
       <Typography variant="h6">

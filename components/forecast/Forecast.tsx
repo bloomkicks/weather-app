@@ -1,9 +1,10 @@
 import type { RootState } from "../../store";
 import type { WeatherStats as IWeatherStats } from "../../models/weather-stats";
-import { Grid } from "@mui/material";
-import WeatherStats from "./WeatherStats";
-import React from "react";
 import { useSelector } from "react-redux";
+
+import Grid from "@mui/material/Grid";
+
+import WeatherStats from "./WeatherStats";
 
 const Forecast = () => {
   const { forecast } = useSelector(
@@ -20,7 +21,7 @@ const Forecast = () => {
       sx={{
         width: "100%",
         ml: { xs: -1, md: 0 },
-        mt: 3,
+        mt: 0,
       }}
     >
       {forecast.map((weatherStats: IWeatherStats | null, i) => (

@@ -1,8 +1,9 @@
-import { WindDirections } from "../../models/highlights";
 import type { Highlight as IHighlight } from "../../models/highlights";
+
 import Arrow from "@mui/icons-material/ArrowBack";
-import React from "react";
-import { Stack, Paper, Typography } from "@mui/material";
+import Stack from "@mui/material/Stack";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 
 import HumidityScale from "./HumidityScale";
 

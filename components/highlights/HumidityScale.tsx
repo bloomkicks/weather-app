@@ -1,9 +1,6 @@
-import {
-  Stack,
-  Typography,
-  LinearProgress,
-} from "@mui/material";
-import React from "react";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import LinearProgress from "@mui/material/LinearProgress";
 
 const HumidityScale = ({ value }: { value: number }) => {
   return (

@@ -1,13 +1,16 @@
 import type { RootState } from "../../store";
-import { useSelector } from "react-redux";
 import type { Highlight as IHighlight } from "../../models/highlights";
+import { useSelector } from "react-redux";
+
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+
 import Highlight from "./Highlight";
-import { Box, Grid, Typography } from "@mui/material";
-import React from "react";
 
 const HighlightList = () => {
-  const { todaysHighlights } = useSelector(
-    (state: RootState) => state.weather
+  const todaysHighlights = useSelector(
+    (state: RootState) => state.weather.todaysHighlights
   );
 
   return (
