@@ -1,6 +1,6 @@
 import {
   WeatherCondition,
-  type WeatherStats as IWeatherStats,
+  type WeatherStats,
 } from "../../models/weather-stats";
 import { DateTime } from "luxon";
 
@@ -9,12 +9,12 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 
-const WeatherStats = ({
+const WeatherCard = ({
   minTemperature = "No",
   maxTemperature = "No",
   weatherCondition = WeatherCondition.CLOUDY,
   index,
-}: IWeatherStats & { index: number }) => {
+}: WeatherStats & { index: number }) => {
   const date = DateTime.now().plus({ day: index });
 
   return (
@@ -56,4 +56,4 @@ const WeatherStats = ({
   );
 };
 
-export default WeatherStats;
+export default WeatherCard;

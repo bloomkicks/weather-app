@@ -33,7 +33,7 @@ const Home: NextPage = () => {
           height="100%"
           maxWidth={{ xs: 520, lg: 900 }}
           mx="auto"
-          sx={{ mt: { md: 4 } }}
+          sx={{ pt: { md: 4 }, pb: 4 }}
         >
           <Forecast />
           <HighlightList />

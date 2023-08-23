@@ -9,7 +9,6 @@ const Footer = () => {
       component="footer"
       mx="auto"
       textAlign="center"
-      mb={4}
       px={6}
       mt="auto"
     >
