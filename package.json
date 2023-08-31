@@ -1,12 +1,19 @@
 {
   "name": "weather-now",
-  "version": "1.0.1",
-  "private": "false",
+  "version": "1.0.2",
+  "private": false,
+  "license": "MIT",
+  "browserslist": [
+    "cover 99%",
+    "not dead"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export -o dist",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "cypress open",
+    "prettier": "prettier --write src/**"
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",

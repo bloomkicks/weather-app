@@ -4,22 +4,49 @@
   "description": "On WeatherNow you can easily find weather forecast and reports for your specific city",
   "icons": [
     {
+      "src": "favicon.ico",
+      "type": "image/x-icon",
+      "sizes": "96x96",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "favicon.png",
+      "type": "image/png",
+      "sizes": "96x96",
+      "purpose": "any maskable"
+    },
+    {
       "src": "favicon-128x128.png",
       "type": "image/png",
-      "sizes": "128x128"
+      "sizes": "128x128",
+      "purpose": "any maskable"
     },
     {
       "src": "apple-touch-icon.png",
       "type": "image/png",
-      "sizes": "180x180"
+      "sizes": "180x180",
+      "purpose": "any maskable"
     },
     {
       "src": "android-chrome-192x192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "favicon-64x64.png",
+      "type": "image/png",
+      "sizes": "64x64",
+      "purpose": "any maskable"
     }
   ],
-  "display": "sntandalone",
+  "display": "standalone",
   "scope": "/",
   "start_url": "/",
   "theme_color": "#E7E7EB",
